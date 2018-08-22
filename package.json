@@ -1,7 +1,6 @@
 {
   "name": "pgmodule_exercise",
   "version": "1.0.0",
-  "description": "",
   "main": "lookup_people.js",
   "dependencies": {
     "knex": "^0.15.2",
@@ -21,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/tienhoah/pgmodule/issues"
   },
-  "homepage": "https://github.com/tienhoah/pgmodule#readme"
+  "homepage": "https://github.com/tienhoah/pgmodule#readme",
+  "description": ""
 }
