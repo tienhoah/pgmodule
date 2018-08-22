@@ -8,6 +8,7 @@ module.exports = {
     connection: {
       user: 'development',
       password: 'development',
+      database: 'test_db',
       filename: './migrations'
     }
   },
