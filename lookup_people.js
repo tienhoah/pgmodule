@@ -11,30 +11,30 @@ const client = new pg.Client({
   ssl      : settings.ssl
 });
 
-
-function getFName (name, cb) {
-    let query = "SELECT * FROM famous_people WHERE first_name = $1";
+function getByFirstName (name, cb) {
+    const query = "SELECT * FROM famous_people WHERE first_name = $1";
 
     client.query(query,[name], (err, result) => {
       if (err) {
         return console.error("error running query", err);
       }
-      cb(result.rows);
-
+      console.log(cb(result.rows));
       client.end();
     });
   }
 
 function printName(records) {
+  var output = ""
   records.forEach(function(r) {
     var date  = `'${r.birthdate.getFullYear()}-${r.birthdate.getMonth()}-${r.birthdate.getDate()}'`;
-    console.log(`- ${r.id}: ${r.first_name} ${r.last_name}, born: ${date}`);
+    output += (`- ${r.id}: ${r.first_name} ${r.last_name}, born: ${date}\n`);
   });
+  return output;
 }
 
 client.connect((err) => {
   if (err) {
     return console.error("Connection Error", err);
   }
-  getFName(famousname, printName);
+  getByFirstName(famousname, printName);
 });
